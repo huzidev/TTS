@@ -79,6 +79,9 @@
     f5-tts_infer-gradio --share
 ```
 
+#### MeloTTS Documentations
+- [E2-F5-TTS Documentations](https://github.com/SWivid/F5-TTS)
+
 #### Possible Error
 One possible error can be of `ffmpeg` for python 
 [Solution Link](https://discuss.huggingface.co/t/audio-classification-pipeline-valueerror-ffmpeg-was-not-found-but-is-required-to-load-audio-files-from-filename/16137/7)
@@ -96,6 +99,9 @@ Run the following command in cmd as `Admin`
 - Upload a sample audio file with `wav` format
 - Give the text to generate and click `Synthesize`
 - Play yours generated result
+- It'll generate the audio of the exact given text in the voice of the file uploaded in the `Reference Audio`
+- For Live Chat in the clonned voice go to `Live Chat` > Upload the Reference Audio and send the message
+- AI will talk with you in the voice of the Referece Audio (Clonned Voice)
 
 ### coqui/XTTS-v2 
 - 1.4M downloads with most likes in TTS models with 1.93k likes But not latest (Last update december of 2023)
