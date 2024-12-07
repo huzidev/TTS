@@ -35,9 +35,6 @@ async function generateSpeech(sample, refText, genText) {
 async function main() {
   try {
     const sampleDir = path.join("sample");
-    if (!fs.existsSync(sampleDir)) {
-      throw new Error(`Sample folder not found: ${sampleDir}`);
-    }
 
     const files = fs.readdirSync(sampleDir).filter((file) =>
       file.endsWith(".m4a") || file.endsWith(".wav") || file.endsWith(".mp3")
@@ -77,10 +74,16 @@ async function main() {
     console.log("Converting...");
     const result = await generateSpeech(sample, refTextInput, genTextInput);
 
+    console.log("SW result of generated text", result);
+    
+
     if (result && result.data && result.data[0].url) {
       const id = Date.now();
       const audioUrl = result.data[0].url;
-      const savePath = path.join("result", `audio${id}.wav`);
+      const text = result.data[2].value;
+      const savePath = path.join("result", `audio_${id}.wav`);
+      const textSavePath = path.join("result", `text_${id}.txt`);
+      fs.writeFileSync(textSavePath, text, "utf-8");
 
       // Fetch and save the audio file
       const response = await fetch(audioUrl);
